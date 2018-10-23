@@ -12,7 +12,7 @@ class ArticlesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('letitre')
+            ->add('letitres')
             ->add('letextes')
             ->add('ladates')
             ->add('lauteurlauteur')

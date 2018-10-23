@@ -1,0 +1,32 @@
+{% extends 'template.html.twig' %}
+{% block title %}{{ parent() }} - {{ lesports.getLetitres }}{% endblock %}
+
+{% block titre %}{{ parent() }} - {{ lesports.getLetitres }}{% endblock %}
+{% block stitre %}Détail de notre article {% endblock %}
+
+{% block menu %}
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ path("accueil") }}">Accueil
+                <span class="sr-only">(current)</span>
+            </a>
+        </li>
+        {% for itemMenu in styles %}
+            <li class="nav-item">
+                <a class="nav-link js-scroll-trigger" href="{{ path("detail_styles",{"id":itemMenu.getIdstyles}) }}">{{ itemMenu.getLestyles }}</a>
+            </li>
+        {% endfor %}
+
+    </ul>
+{% endblock %}
+
+{% block contenu %}
+    <h2>{{ lesports.getLetitres }}</h2>
+    <h3>
+        {% for categ in lesports.getStylesstyles %}
+            <a href="{{ path("detail_styles",{"id":categ.getIdstyles}) }}">{{ categ.getLestyles }}</a> |
+        {% endfor %}
+    </h3>
+    <p>{{ lesports.getLetextes|nl2br }}</p>
+    <h4>Par {{ lesports.getLauteurlauteur.getLenomcomplet }} le {{ lesports.getLadates|date("d/m/Y à H \\h i \\m") }}</h4><hr>
+{% endblock %}

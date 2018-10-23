@@ -1,0 +1,37 @@
+{% extends 'template.html.twig'%}
+{% block title %}{{ parent() }} - Accueil{% endblock %}
+
+{% block titre %}{{ parent() }} - Accueil{% endblock %}
+
+{% block menu %}
+    {% if lesports is empty %}
+        <h3><small>il n'y pas encore d'article dans cette rubrique</small><a href="{{ path('accueil') }}">retour a l'accueil</a> </h3>
+    {% endif %}
+
+    {% for itemMenu in styles %}
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link js-scroll-trigger" href="{{  path("detail_styles",{"id":itemMenu.getIdstyles}) }}">{{ itemMenu.getLestyles }}</a>
+        </li>
+
+    {% endfor %}
+    </ul>
+    </div>
+    </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {% for item in lesports %}
+        <h2>{{ item.getLetitres }}</h2>
+        <h3>
+            {% for categ in item.getStylesstyles %}
+                <a href="{{ path("detail_styles",{"id":categ.getIdstyles}) }}">{{ categ.getLestyles }}</a> |
+            {% endfor %}
+        </h3>
+        <p>{{ item.getLetextes|truncate(350,true) }}<a href="{{ path("detail_lesports",{'id': item.getIdlesports}) }}">Lire la suite</a></p>
+        <h4>Par {{ item.getLauteurlauteur.getLenomcomplet }}
+            le {{ item.getLadates|date("d/m/Y à H \\h i \\m") }}</h4><hr>
+    {% endfor %}
+{% endblock %}

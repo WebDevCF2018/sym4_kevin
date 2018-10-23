@@ -4,18 +4,20 @@ security:
         in_memory:
             memory:
                 users:
-                    admin:
+                    Kevin:
                         password: TheBestOne
                         roles: 'ROLE_ADMIN'
-                    auteur:
-                        password: kevin
-                        roles: 'ROLE_USER'
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: ~
+            form_login:
+                login_path: login
+                check_path: login
+                default_target_path: articles_index
             http_basic: ~
             logout:
                 path:   the_logout

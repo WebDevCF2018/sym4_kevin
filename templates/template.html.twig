@@ -1,5 +1,6 @@
 {% extends 'public/base.html.twig' %}
-
+{% block title %}les sports de combat{% endblock %}
+{% block titre %}les sports de combat{% endblock %}
 {% block body %}
     <body id="page-top">
 
@@ -54,7 +55,8 @@
     {% block content %}
     <section class="bg-dark text-white">
         <div class="container text-center">
-            <h2 class="mb-4">{% block contenu %}{% endblock %}</h2>
+            <h2 class="mb-4"></h2>
+                {% block contenu %}{% endblock %}
         </div>
     </section>
     {% endblock %}

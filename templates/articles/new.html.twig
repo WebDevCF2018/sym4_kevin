@@ -1,0 +1,23 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}New Articles{% endblock %}
+ {% block menu %}
+     <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
+             <a class="nav-link" href="{{ path("articles_index") }}">Accueil de l'administration</a>
+         </li>
+         <li class="nav-item active">
+             <a class="nav-link" href="{{ path('articles_new') }}">Créer un nouvel article</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="{{ path('the_logout')}}">Déconnexion</a>
+         </li>
+     </ul>
+ {% endblock %}
+{% block content %}
+    <h1>Créer un nouvel article</h1>
+
+    {{ include('articles/_form.html.twig') }}
+
+    <a href="{{ path('articles_index') }}">Revenir à la liste</a>
+{% endblock %}

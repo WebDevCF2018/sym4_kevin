@@ -58,6 +58,16 @@ class Lesports
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Styles", mappedBy="lesportslesports")
+     *@ORM\JoinTable(name="styles_has_lesports",
+     *   joinColumns={
+     *  @ORM\JoinColumn(name="lesports_idlesports", referencedColumnName="idlesports")
+     *   },
+     *   inverseJoinColumns={
+     *      *     @ORM\JoinColumn(name="styles_idstyles", referencedColumnName="idstyles")
+     *   }
+     *
+     *
+     * )
      */
     private $stylesstyles;
 
@@ -66,8 +76,8 @@ class Lesports
      */
     public function __construct()
     {
-        $this->stylesstyles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->sectionssections = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->setLadates(new \DateTime());}
 
     public function getIdlesports(): ?int
     {

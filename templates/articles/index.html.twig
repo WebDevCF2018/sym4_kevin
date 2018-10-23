@@ -1,0 +1,53 @@
+{% extends 'template.html.twig' %}
+
+ {% block title %}{{parent()}} - Liste des articles{% endblock %}
+
+    {% block menu %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path("articles_index") }}">Accueil de l'administration</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{{ path('articles_new') }}">Créer un nouvel article</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('the_logout')}}">Déconnexion</a>
+            </li>
+        </ul>
+    {% endblock %}
+
+{% block content%}
+    <hr>
+    <center><p class="lead">{% block stitre %}Liste de tous nos articles{% endblock %}</p></center>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Idlesports</th>
+            <th>letitres</th>
+            <th>letextes</th>
+            <th>ladates</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for articles in articles %}
+            <tr>
+                <td>{{ articles.idlesports }}</td>
+                <td>{{ articles.letitres }}</td>
+                <td>{{ articles.letextes }}</td>
+                <td>{{ articles.ladates ? articles.ladates|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('articles_show', {'idlesports': articles.idlesports}) }}">voir</a>
+                    <a href="{{ path('articles_edit', {'idlesports': articles.idlesports}) }}">Modifer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">pas encore trouver d'article</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

@@ -16,19 +16,21 @@
         </li>
 
     {% endfor %}
+    <li class="nav-item"> <a class="nav-link" href="{{ path('articles_index')}}">Admin</a></li>
     </ul>
     </div>
     </div>
     </nav>
 {% endblock %}
 
-{% block content %}
+{% block contenu %}
     {% for item in lesports %}
         <h2>{{ item.getLetitres }}</h2>
         <h3>
             {% for categ in item.getStylesstyles %}
                 <a href="{{ path("detail_styles",{"id":categ.getIdstyles}) }}">{{ categ.getLestyles }}</a> |
             {% endfor %}
+
         </h3>
         <p>{{ item.getLetextes|truncate(350,true) }}<a href="{{ path("detail_lesports",{'id': item.getIdlesports}) }}">Lire la suite</a></p>
         <h4>Par {{ item.getLauteurlauteur.getLenomcomplet }}

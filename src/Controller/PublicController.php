@@ -32,9 +32,9 @@ class PublicController extends AbstractController
     }
     /**
      *
-     * Matches /article/{id},
+     * Matches /articles/{id},
      * {id} is a requirement digit: "\d+" for more security
-     * to view an article's detail
+     * to view an articles's detail
      *
      * @Route("/lesports/{id}", name="detail_lesports", requirements={"id"="\d+"})
      */
@@ -46,7 +46,7 @@ class PublicController extends AbstractController
         // get all sections in db for menu
         $styles = $entityManager->getRepository(Styles::class)->findAll();
 
-        // get one article by its "id" from db
+        // get one articles by its "id" from db
         $sports = $entityManager->getRepository(Lesports::class)->find($id);
 
         // return the Twig's view with 2 arguments

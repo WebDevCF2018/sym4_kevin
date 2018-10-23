@@ -39,7 +39,7 @@ class Styles
 
     /**
      * @var \Doctrine\Common\Collections\Collection
-     *
+     *@ORM\OrderBy({"idlesports" = "DESC"})
      * @ORM\ManyToMany(targetEntity="Lesports", inversedBy="stylesstyles")
      * @ORM\OrderBy({"idlesports" ="DESC"})
      * @ORM\JoinTable(name="styles_has_lesports",
@@ -115,5 +115,8 @@ class Styles
 
         return $this;
     }
-
+    public function __toString()
+    {
+        return (string) $this->getLestyles();
+    }
 }

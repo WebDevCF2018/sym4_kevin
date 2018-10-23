@@ -1,0 +1,46 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Articles{% endblock %}
+ {% block menu %}
+     <ul class="navbar-nav ml-auto">
+         <li class="nav-item active">
+             <a class="nav-link" href="{{ path("articles_index") }}">Accueil de l'administration</a>
+         </li>
+         <li class="nav-item active">
+             <a class="nav-link" href="{{ path('articles_new') }}">Créer un nouvel article</a>
+         </li>
+         <li class="nav-item">
+             <a class="nav-link" href="{{ path('the_logout')}}">Déconnexion</a>
+         </li>
+     </ul>
+ {% endblock %}
+{% block content %}
+    <h1>Articles</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Idlesports</th>
+                <td>{{ articles.idlesports }}</td>
+            </tr>
+            <tr>
+                <th>Letitres</th>
+                <td>{{ articles.letitres }}</td>
+            </tr>
+            <tr>
+                <th>Letextes</th>
+                <td>{{ articles.letextes }}</td>
+            </tr>
+            <tr>
+                <th>Ladates</th>
+                <td>{{ articles.ladates ? articles.ladates|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('articles_index') }}">Revenir à la liste</a>
+
+    <a href="{{ path('articles_edit', {'idlesports': articles.idlesports}) }}">Modifier</a>
+
+    {{ include('articles/_delete_form.html.twig') }}
+{% endblock %}
